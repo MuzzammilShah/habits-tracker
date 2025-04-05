@@ -1,7 +1,12 @@
 [build]
-  base = "client"
-  publish = "build"
-  command = "npm run build"
+  base = ""
+  command = "npm --prefix client run build"
+  publish = "client/build"
 
 [functions]
   directory = "functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
