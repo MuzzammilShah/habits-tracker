@@ -69,7 +69,10 @@ const Dashboard = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.get('http://localhost:5000/api/tasks', {
+      // const { data } = await axios.get('http://localhost:5000/api/tasks', {
+      //   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      // });
+      const { data } = await axios.get('/.netlify/functions/tasks-get', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const tasksWithDates = data.map(task => ({
@@ -88,7 +91,10 @@ const Dashboard = () => {
     setLoading(true);
     setError('');
     try {
-      await axios.post('http://localhost:5000/api/tasks', task, {
+      // await axios.post('http://localhost:5000/api/tasks', task, {
+      //   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      // });
+      await axios.post('/.netlify/functions/tasks-post', task, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setIsModalOpen(false);
@@ -105,7 +111,10 @@ const Dashboard = () => {
     setError('');
     try {
       console.log('Completing task, ID:', id); // Debug
-      const response = await axios.post(`http://localhost:5000/api/tasks/${id}/complete`, {}, {
+      // const response = await axios.post(`http://localhost:5000/api/tasks/${id}/complete`, {}, {
+      //   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      // });
+      await axios.post(`/.netlify/functions/tasks-complete/${id}`, {}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       console.log('Task updated:', response.data); // Debug the returned task
