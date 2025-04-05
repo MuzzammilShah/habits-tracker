@@ -114,7 +114,7 @@ const Dashboard = () => {
       // const response = await axios.post(`http://localhost:5000/api/tasks/${id}/complete`, {}, {
       //   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       // });
-      await axios.post(`/.netlify/functions/tasks-complete/${id}`, {}, {
+      const response = await axios.post(`/.netlify/functions/tasks-complete/${id}`, {}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       console.log('Task updated:', response.data); // Debug the returned task
