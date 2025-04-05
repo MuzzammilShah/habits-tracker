@@ -1,12 +1,12 @@
 [build]
-  base = ""
-  command = "npm --prefix client run build"
-  publish = "client/build"
+base = ""
+command = "CI= npm --prefix client install && npm --prefix client run build"
+publish = "client/build"
 
 [functions]
-  directory = "functions"
+directory = "functions"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+to = "/index.html"
+status = 200
