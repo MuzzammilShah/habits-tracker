@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.dashboard {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Adding the background image with opacity */
+.dashboard::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../background.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto; /* Stretch width, keep height ratio */
+  background-position: top center;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px; /* Adds spacing between text and border */
+  border-bottom: 2px solid #ddd; /* Adjust thickness and color as needed */
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text h1{
+  margin: 20px 0 0 0;
+}
+
+.subheader {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.logout-btn {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff; /* Slightly softer black */
+  color: #000000;
+  border: none;
+  padding: 10px 20px; /* Increased padding for a more comfortable click area */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  border-radius: 8px; /* Rounded edges for buttons */
+  font-weight: 500; /* Medium weight for a modern look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logout-btn:hover {
+  color: #ffffff;
+  background-color: #333; /* Slightly lighter on hover */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.add-task-btn {
+  padding: 12px 20px;
+  margin-bottom: 30px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.add-task-btn:hover {
+  background-color: #000000;
+}
+
+.task-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.task-form input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  flex: 1;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.task-card {
+  border: none;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.6s ease-in-out;
+}
+
+.task-card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.07), 
+              0 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.task-card h3 {
+  margin: 0 0 15px 0;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* .task-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 600px; 
+  overflow-x: auto; 
+  padding-bottom: 10px; 
+} */
+
+.task-graph-wrapper {
+  overflow-x: auto;
+  padding-bottom: 10px; /* Ensure scrollbar doesn't cover content */
+}
+
+.task-graph {
+  display: flex;
+  flex-direction: column;
+  /* Set a minimum width to avoid collapsing when there are many weeks */
+  min-width: 500px;
+}
+
+.task-block {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.task-block[style*="background-color: #34c759"] {
+  background-color: #34c759 !important;
+}
+
+.task-block[style*="background-color: #ebedf0"] {
+  background-color: #ebedf0 !important;
+}
+
+.task-block:hover:after {
+  content: attr(data-date);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.task-block-placeholder {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  visibility: hidden; /* Makes the placeholder invisible but still takes up space */
+}
+
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.task-streak {
+  color: #333;
+  font-weight: 500;
+}
+
+.task-streak .fire {
+  color: #ff6f61;
+}
+
+.task-days-left {
+  color: #333;
+  font-weight: 500;
+}
+
+.task-legend {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between legend items */
+}
+
+.legend-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 5px; /* Adds space between box and text */
+}
+
+.legend-item {
+  display: flex;
+  align-items: center; /* Align box and text properly */
+}
+
+
+.done {
+  background-color: #34c759;
+}
+
+.missed {
+  background-color: #ebedf0;
+}
+
+.view-details-btn {
+  margin-top: 20px;
+  background: none;
+  color: #333;
+  padding: 0;
+  font-size: 0.9rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between text and arrow */
+  cursor: pointer;
+  border: none;
+}
+
+.view-details-btn:hover {
+  background: none;
+  color: #000;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out; /* Smooth rotation */
+}
+
+.task-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: scaleY(0.95);
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.task-details.expanded {
+  max-height: 200px; /* Adjust based on content */
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.task-details p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1001;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content input[type="text"] {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.modal-content input[type="date"] {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="date"]:focus {
+  border-color: #1a1a1a;
+  outline: none;
+}
+
+.modal-content select,
+.modal-content textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.modal-content textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-weight: 500;
+}
+
+.modal-content .button-group button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.modal-content .button-group button:hover {
+  background-color: #000000;
+}
+
+.modal-content .button-group {
+  display: flex;
+  gap: 8px; /* Adjust spacing here */
+  justify-content: center;
+}
+
+.modal-content .button-group .close-button {
+  background-color: white;  /* White background */
+  color: black;             /* Black text */
+  border: 2px solid black;  /* Black border */
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.modal-content .button-group .close-button:hover {
+  background-color: #f0f0f0; /* Light grey on hover */
+}
+
+.modal-content button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px 10px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .task-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .task-graph {
+    grid-auto-columns: 12px;
+  }
+
+  .task-block {
+    width: 12px;
+    height: 12px;
+  }
+
+  .task-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .subheader {
+    font-size: 0.9rem;
+  }
+
+  .modal-content{
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-card h3 {
+    font-size: 1rem;
+  }
+
+  .task-graph {
+    grid-auto-columns: 10px;
+  }
+
+  .task-block {
+    width: 10px;
+    height: 10px;
+  }
+
+  .task-legend {
+    font-size: 0.75rem;
+  }
+
+  .modal-content{
+    max-width: 60%;
+  }
+}
+
+.heatmap-header {
+  display: flex;
+  gap: 4px;
+  min-width: max-content; /* Ensure the header doesn’t shrink */
+}
+
+.heatmap-weeks {
+  display: flex;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2px; /* Spacing between week columns */
+}
+
+.heatmap-month {
+  width: 60px; /* Fixed width for each month column */
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.heatmap-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: max-content; /* Ensure the body doesn’t shrink */
+}
+
+.heatmap-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heatmap-day {
+  width: 12px;
+  height: 12px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.heatmap-day.empty {
+  background-color: transparent;
+}
+
+.heatmap-day-label {
+  width: 40px;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+}
+
+.heatmap-cell {
+  width: 60px; /* Match the month column width */
+  display: flex;
+  gap: 4px;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  position: relative;
+  /* bottom: 80%; */
+  left: 60%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1; /* Ensures it’s above everything */
+}
+
+.heatmap-day:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}

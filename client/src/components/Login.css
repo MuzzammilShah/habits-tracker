@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+} */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+  overflow: hidden;
+}
+
+/* Adding the background image with opacity */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../background.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* Adjust opacity as needed */
+  z-index: -1; /* Puts it behind the content */
+}
+
+/* Ensure form and other elements stay above the background */
+.login-container form {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(255, 255, 255); /* Semi-transparent background for readability */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.login-container h2 {
+  margin-bottom: 30px; /* Increased spacing below the header */
+  color: #1a1a1a; /* Softer black for text */
+  font-weight: 600; /* Bolder weight for emphasis */
+  font-size: 2rem; /* Larger header for impact */
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Increased gap between elements */
+  padding: 30px; /* Padding inside the form container */
+  background-color: #fff; /* White background for the card */
+  border-radius: 12px; /* Rounded edges for the form */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 100%;
+  max-width: 400px; /* Fixed width for a card-like appearance */
+}
+
+.login-container input {
+  padding: 12px 15px; /* More padding for a comfortable input area */
+  border: 1px solid #ddd; /* Softer border color */
+  border-radius: 8px; /* Rounded edges for inputs */
+  background-color: #fff;
+  color: #333; /* Softer text color */
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease;
+  font-weight: 500;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: #1a1a1a; /* Highlight on focus */
+}
+
+.login-container button {
+  margin-top: 15px; /* Increased top margin */
+  padding: 12px; /* More padding for a larger click area */
+  border: none;
+  border-radius: 8px; /* Rounded edges for the button */
+  background-color: #333; /* Softer black background */
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500; /* Medium weight for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.login-container button:hover {
+  background-color: #000000; /* Lighter on hover */
+}
+
+.login-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .login-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .login-container form {
+    padding: 20px;
+    max-width: 70%; /* Allow form to take more space on smaller screens */
+  }
+
+  .login-container input {
+    padding: 10px 12px;
+  }
+
+  .login-container button {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-container form {
+    padding: 15px;
+  }
+
+  .login-container input {
+    padding: 8px 10px;
+  }
+
+  .login-container button {
+    padding: 8px;
+  }
+}
