@@ -317,7 +317,7 @@ const renderGraph = (task) => {
             </button>
             <div>
               <span className="task-streak">Streak: {task.streak} <span className="fire">🔥</span></span>
-              <span className="task-days-left"> | Total Days: {calculateDaysLeft(task)}</span>
+              <span className="task-days-left"> | Days remaining: {calculateDaysLeft(task)}</span>
             </div>
           </div>
           {/* <p className="task-legend">
