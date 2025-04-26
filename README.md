@@ -77,4 +77,4 @@ The project has been structured and optimized for deployment on Netlify, includi
 
 ## 📂 Project Structure and Setup
 
-For details on setting up and running the project locally, please refer to [`instruction.md`](instruction.md).
+For details on setting up and running the project locally, please refer to [`instructions.md`](instructions.md).
