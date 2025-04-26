@@ -10,6 +10,8 @@ Netlify server codes - `/functions`
 
 -----
 
+&nbsp;
+
 ## 🧪 Getting Started Locally
 
 ### Prerequisites
@@ -56,6 +58,8 @@ NOTE: If you are running it using the above commands, Make sure you change all t
 
 -----
 
+&nbsp;
+
 ## 🌐 Hosting on Netlify
 
 ### Testing the environment before hosting in production
@@ -74,7 +78,6 @@ NOTE: If you are running it using the above commands, Make sure you change all t
 > That's why the `/functions` directory has been created with serverless-compatible handlers.  
 > The `netlify.toml` file also defines all necessary redirects and build instructions.
 
----
 
 ### Hosting on Netlify (Using UI)
 
@@ -101,8 +104,6 @@ NOTE: If you are running it using the above commands, Make sure you change all t
 
 8. After deployment, you can test everything online. If needed, trigger a **"Redeploy"** from the site dashboard after making any changes or a **"Auto-Redeploy"** triggers once you push the code to the main branch on github.
 
----
-
 > 📝 **Tip:** If you modify backend logic or environment variables, always trigger a fresh redeploy for changes to take effect properly.
 
 <p align="center">
@@ -112,6 +113,8 @@ NOTE: If you are running it using the above commands, Make sure you change all t
 </p>
 
 ---
+
+&nbsp;
 
 <p align="center">
   Made with ❤️ for personal habit building.

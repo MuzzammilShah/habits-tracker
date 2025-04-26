@@ -60,19 +60,19 @@ The project has been structured and optimized for deployment on Netlify, includi
       <td><img src="assets/Screenshot%20(49).png" alt="Add new task" width="400"/></td>
     </tr>
     <tr>
-      <td><img src="assets/Screenshot%20(45).png" alt="Task details" width="400"/></td>
+      <td><img src="assets/Screenshot%20(58).png" alt="Task marked done" width="400"/></td>
       <td><img src="assets/Screenshot%20(57).png" alt="Task not yet done" width="400"/></td>
     </tr>
     <tr>
       <td colspan="2" align="center">
-        <img src="assets/Screenshot%20(58).png" alt="Task marked done" width="400"/>
+        <img src="assets/Screenshot%20(45).png" alt="Task details" width="400"/>
       </td>
     </tr>
   </table>
-
-  <br/>
   
   <p><i>Preview of different pages and habit tracking views ✨</i></p>
+
+  <br/>
 </div>
 
 ## 📂 Project Structure and Setup
